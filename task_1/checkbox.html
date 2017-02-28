@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        input {
+            display: none;
+        }
+        
+       .radioBox label {
+            display: inline-block;
+            margin: 5px;
+            width: 10px;
+            height: 10px;
+            border: 1px solid red;
+            border-radius: 50%;
+            position: relative;
+        }
+        
+        .radios:checked+label:after {
+            content: '';
+            width: 6px;
+            height: 6px;
+            display: block;
+            border-radius: 50%;
+            background-color: red;
+            position: relative;
+            top: 2px;
+            left: 2px;
+        }
+        .checkBox label {
+            display: inline-block;
+            margin: 5px;
+            width: 10px;
+            height: 10px;
+            border: 1px solid red;
+            position: relative;
+        }
+        .checkboxs:checked+label:after{
+            content: '✔';
+            display: block;
+            width: 8px;
+            height: 8px;
+            line-height: 8px;
+            color: red;
+            font-weight: 700;
+            font-size: 12px;
+            position: absolute;
+            top: 2px;
+            left: 0px;
+        }
+
+        .radioBoxBg label{
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            background: url(bg.png) no-repeat -24px -10px;
+        }
+        .radioBg:checked+label{
+            background-position: -59px -10px;
+        }
+
+        .checkBoxBg label{
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            background: url(bg.png) no-repeat -24px -32px;
+        }
+        .checkBg:checked+label{
+            background-position: -60px -32px;
+        }
+    </style>
+</head>
+
+<body>
+    <!--伪元素实现-->
+    <div class="radioBox">
+        <input type="radio" name="sex" id="radioBox" class="radios">
+        <label for="radioBox"></label>
+        <input type="radio" name="sex" id="radioBox1" class="radios">
+        <label for="radioBox1"></label>
+    </div>
+    <div class="checkBox">
+        <input type="checkbox" name="sex" id="check" class="checkboxs">
+        <label for="check"></label>
+        <input type="checkbox" name="sex" id="check1" class="checkboxs">
+        <label for="check1"></label>
+    </div>
+
+    <!--背景图实现-->
+    <div class="radioBoxBg">
+        <input type="radio" name="sex" id="radioBox2" class="radioBg">
+        <label for="radioBox2"></label>
+        <input type="radio" name="sex" id="radioBox3" class="radioBg">
+        <label for="radioBox3"></label>
+    </div>
+    <div class="checkBoxBg">
+        <input type="checkbox" name="sex" id="check2" class="checkBg">
+        <label for="check2"></label>
+        <input type="checkbox" name="sex" id="check3" class="checkBg">
+        <label for="check3"></label>
+    </div>
+</body>
+
+</html>
