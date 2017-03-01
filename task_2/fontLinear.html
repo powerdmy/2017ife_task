@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>字体流光效果</title>
+    <style>
+        html{
+            font-family: "Segoe UI",'Microsoft Yahei',Helvetica,Arial;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        a{
+            text-decoration: none;
+        }
+        .text {
+            background-image: -webkit-linear-gradient(left, blue, red 25%, blue 50%, red 75%, blue 100%);
+            color: transparent;
+            -webkit-background-clip: text;
+            background-size: 200% 100%;
+            animation: streamer 2s infinite linear;
+            font-size: 35px;
+            opacity: 0;
+            transition: all .8s;
+        }
+        .border a{
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -19px;
+            margin-left: -168px;
+            z-index: 999;
+        }
+        @keyframes streamer {
+            0% {
+                background-position-x: 0;
+            }
+            100% {
+                background-position-x: -100%;
+            }
+        }
+
+        .wrap{
+            width: 500px;
+            height: 250px;
+            margin: 100px auto;
+            background: url(./bg.jpg) no-repeat center center;
+            position: relative;
+        }
+
+        .border{
+            width: 400px;
+            height: 200px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -100px;
+            margin-left: -200px;
+            background: url(./bg.jpg) no-repeat center center;
+            cursor: pointer;
+        }
+        .border::after{
+            content: '';
+            display: block;
+            position: absolute;
+            border-top: 3px solid #fff;
+            border-bottom: 3px solid #fff;
+            width: 25%;
+            height: 100%;
+            top: 0;
+            left: 37%;
+            transition: all .8s;
+            visibility: hidden;
+        }
+        .border::before{
+            content: '';
+            display: block;
+            position: absolute;
+            border-left: 3px solid #fff;
+            border-right: 3px solid #fff;
+            width: 100%;
+            height: 25%;
+            top: 37%;
+            left: 0;
+            transition: all .8s;
+            visibility: hidden;
+        }
+        .border:hover{
+            -webkit-filter: blur(1px);
+        }
+        .border:hover a h1{
+           opacity: 1;        
+        }
+        .border:hover::after{
+            visibility: visible;
+            width: 100%;
+            left: 0;
+        }
+        .border:hover::before{
+            visibility: visible;
+            height: 100%;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="border">
+          <a href="http://dengmy.cn"><h1 class="text">welcome to my bolg</h1></a>
+        </div>
+    </div>
+</body>
+
+</html>
