@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    监听数据
+</body>
+<script>
+    var data = {
+        user:{
+            name:'dengmy',
+            age:'22'
+        },
+        info:{
+            width:'500px',
+            height:'600px'
+        },
+        num:'21'
+    }
+    function Observe(data){
+        this.data = data;
+        this.finder(data);
+    }
+    // 递归遍历每一个属性，设置其getter和setter
+    Observe.prototype.finder = function(obj){
+        var val;
+        for(var k in obj){
+            if(obj.hasOwnProperty(k)){
+                val = obj[k];
+                if(typeof val === 'object'){
+                    new Observe(val);
+                }
+                else{
+                 this.changeGs(k,val);//设置每个属性的getter和setter
+                }
+            }
+        }
+    }
+    //设置每个key的getter和setter
+    Observe.prototype.changeGs=function(k,val){
+        Object.defineProperty(this.data,k,{
+           enumerable: true,
+           configurable: true,
+           get:function(){
+               console.log('你取了'+k+'的值');
+               return val;
+           },
+           set:function(newval){
+               console.log('你设置了'+k+'的值,为'+newval);
+               val = newval;
+           }
+        })
+    }
+    var app = new Observe(data);
+    console.log(app.data);
+</script>
+</html>
